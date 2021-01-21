@@ -1,0 +1,13 @@
+package com.departmentservice.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class OganizationDepartmentServiceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(OganizationDepartmentServiceApplication.class, args);
+	}
+
+}

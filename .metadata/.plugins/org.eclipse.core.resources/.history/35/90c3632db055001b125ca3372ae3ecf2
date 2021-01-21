@@ -1,0 +1,18 @@
+package com.departmentservice.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * 
+ * @author HarithaNadimpalli
+ *
+ */
+/**
+ * In this class have the all the methods related to Organization Department
+ */
+@RestController
+@RequestMapping("/department")
+public class OrgDepartmentController {
+
+}

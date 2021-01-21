@@ -1,0 +1,15 @@
+package com.springboot.h2.model;
+
+import javax.validation.constraints.NotNull;
+
+public class helper {
+	private String departmentDes;
+
+	public String getDepartmentDes() {
+		return departmentDes;
+	}
+
+	public void setDepartmentDes(String departmentDes) {
+		this.departmentDes = departmentDes;
+	}
+}

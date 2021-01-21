@@ -1,0 +1,55 @@
+package com.employeeservice.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.employeeservice.entity.EmployeeEntity;
+import com.employeeservice.model.EmployeeReq;
+import com.employeeservice.service.EmployeeService;
+
+@RestController
+@RequestMapping("/employeeInfo")
+public class EmployeeInfoController {
+	
+	@Autowired
+	EmployeeService empService;
+	
+	@GetMapping("/allemployees")
+	public ResponseEntity<List<EmployeeEntity>> getAllEmployees() {
+		//LOGGER.info("OrderItemController :: Received Request ....");
+		List<EmployeeEntity> empList = new ArrayList<EmployeeEntity>();
+		empList = empService.getAllEmployees();
+		return new ResponseEntity<>(empList, HttpStatus.OK);
+	}
+	
+	
+	@PostMapping("/createEmployee")
+	public ResponseEntity<EmployeeEntity> saveEmployee(@Valid @RequestBody EmployeeReq empReq) {
+		//LOGGER.info("OrderItemController :: Received Request ....");
+		EmployeeEntity createdEmp = empService.addEmployee(empReq);
+		return new ResponseEntity<>(createdEmp, HttpStatus.OK);
+	}
+	
+	@GetMapping("/empsByIds")
+	public ResponseEntity<Set<EmployeeEntity>> getEmpsByIds(@RequestParam("ids") Set<Long> ids) {
+		//LOGGER.info("OrderItemController :: Received Request ::  getOrderItemByIds: " + ids.toString());
+		Set<EmployeeEntity> emps = empService.getEmpsByIds(ids);
+
+		return new ResponseEntity<>(emps, HttpStatus.OK);
+
+	}
+	
+}

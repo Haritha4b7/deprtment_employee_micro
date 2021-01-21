@@ -1,0 +1,57 @@
+1610369820756	Rename package 'com.example.demo'
+1610369873915	Delete element
+1610369895758	Copy package
+1610369955005	Delete element
+1610370118876	Copy package
+1610370129356	Delete element
+1610370735721	Copy package
+1610370744088	Delete element
+1610371399384	Rename package 'com.example.dao'
+1610371430164	Copy package
+1610371438537	Delete element
+1610371456779	Copy compilation unit
+1610371471492	Delete element
+1610375799508	Rename compilation unit 'EmployeeEntity.java'
+1610376392465	Copy package
+1610376401957	Delete element
+1610376451557	Copy package
+1610376468597	Copy package
+1610376488690	Copy package
+1610376499050	Copy package
+1610376511620	Rename package 'com.example.Impl'
+1610376685572	Rename compilation unit 'EployeeRestController.java'
+1610377449161	Rename type 'Demo2Application'
+1610378184326	Rename compilation unit 'DemoMainApplication.java'
+1610378269032	Rename compilation unit 'Employee.java'
+1610378309686	Rename compilation unit 'EmployeeRepository.java'
+1610378347848	Rename compilation unit 'EmployeeService.java'
+1610378388127	Rename compilation unit 'EmployeeRestController.java'
+1610383277636	Delete elements
+1610383301176	Delete elements
+1610432041755	Rename package 'com.howtodoinjava.demo'
+1610432089605	Rename compilation unit 'DemoApplication.java'
+1610432121921	Rename package 'com.howtodoinjava.demo.exception'
+1610432157458	Rename package 'com.howtodoinjava.demo.model'
+1610432172540	Rename package 'com.restweservice.demo.model'
+1610432191261	Rename package 'com.restweservice.demo.exception'
+1610432243823	Rename package 'com.howtodoinjava.demo.web'
+1610432310221	Rename package 'com.howtodoinjava.demo.service'
+1610432484407	Delete element
+1610432681212	Delete element
+1610432705156	Delete element
+1610432870478	Rename package 'com.restweservice.mainApp'
+1610432911071	Rename package 'com.howtodoinjava.demo.DemoApplicationTests'
+1610432928377	Rename package 'comrestwebservice.mainApp'
+1610433174552	Delete element
+1610434137925	Rename package 'com.howtodoinjava.demo'
+1610434176251	Rename compilation unit 'DemoApplication.java'
+1610434203729	Delete element
+1610434213872	Delete elements
+1610434234963	Rename package 'com.howtodoinjava.demo.exception'
+1610434293858	Rename package 'com.howtodoinjava.demo.model'
+1610434383838	Rename package 'com.howtodoinjava.demo.repository'
+1610434452669	Rename package 'com.howtodoinjava.demo.service'
+1610434516064	Rename package 'com.howtodoinjava.demo.web'
+1610435204116	Delete element
+1610435215291	Delete elements
+1610435331147	Delete elements

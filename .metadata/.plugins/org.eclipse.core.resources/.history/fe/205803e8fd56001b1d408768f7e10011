@@ -1,0 +1,78 @@
+package com.employeeservice.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import javax.validation.Valid;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.employeeservice.entity.EmployeeEntity;
+import com.employeeservice.model.EmployeeReq;
+import com.employeeservice.service.EmployeeService;
+
+/**
+ * @author Haritha Nadimpall
+ *
+ */
+@RestController
+@RequestMapping("/employeeInfo")
+public class EmployeeInfoController {
+	
+	private static final Logger LOGGER = LogManager.getLogger(EmployeeInfoController.class);
+	
+	@Autowired
+	EmployeeService empService;
+	
+	/**
+	 * This method will return all the employee details .
+	 * 
+	 * @return
+	 */
+	@GetMapping("/allemployees")
+	public ResponseEntity<List<EmployeeEntity>> getAllEmployees() {
+		LOGGER.info("EmployeeInfoController :: Received Request ....");
+		List<EmployeeEntity> empList = new ArrayList<EmployeeEntity>();
+		empList = empService.getAllEmployees();
+		return new ResponseEntity<>(empList, HttpStatus.OK);
+	}
+	
+	/**
+	 * This method will save the employee into Database
+	 * 
+	 * @param emp request
+	 */
+	@PostMapping("/createEmployee")
+	public ResponseEntity<EmployeeEntity> saveEmployee(@Valid @RequestBody EmployeeReq empReq) {
+		//LOGGER.info("OrderItemController :: Received Request ....");
+		EmployeeEntity createdEmp = empService.addEmployee(empReq);
+		return new ResponseEntity<>(createdEmp, HttpStatus.OK);
+	}
+	
+	@GetMapping("/empId")
+	public ResponseEntity<EmployeeEntity> getEmpById(@RequestParam("id") long id) {
+		//LOGGER.info("OrderItemController :: Received Request :: getOrderItemById: " + id);
+		EmployeeEntity emp = empService.getemployeeById(id);
+		return new ResponseEntity<>(emp, HttpStatus.OK);
+	}
+	@GetMapping("/empsByIds")
+	public ResponseEntity<Set<EmployeeEntity>> getEmpsByIds(@RequestParam("ids") Set<Long> ids) {
+		//LOGGER.info("OrderItemController :: Received Request ::  getOrderItemByIds: " + ids.toString());
+		Set<EmployeeEntity> emps = empService.getEmpsByIds(ids);
+
+		return new ResponseEntity<>(emps, HttpStatus.OK);
+
+	}
+	
+}

@@ -1,0 +1,15 @@
+package com.departmentservice.model;
+
+import javax.validation.constraints.NotNull;
+
+public class EmployeeItem {
+
+	@NotNull
+	private String empFirstName;
+
+	@NotNull
+	private String empLastName;
+
+	@NotNull
+	private String email;
+}

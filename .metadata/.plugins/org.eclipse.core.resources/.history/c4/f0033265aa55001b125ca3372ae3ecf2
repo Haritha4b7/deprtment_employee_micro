@@ -1,0 +1,13 @@
+package com.departmentservice.controller;
+
+/**
+ * 
+ * @author HarithaNadimpalli
+ *
+ */
+/**
+ * In this class have the all the methods related to OrderService
+ */
+public class OrgDepartmentController {
+
+}

@@ -1,0 +1,5 @@
+package com.departmentservice.exception;
+
+public class ExceptionDetails {
+
+}

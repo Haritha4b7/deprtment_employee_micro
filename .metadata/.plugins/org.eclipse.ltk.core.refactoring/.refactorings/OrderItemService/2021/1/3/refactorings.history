@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;ExceptionResponse.java&apos; to &apos;Oganization-Employee-service/src/main/java/com.employeeservice.Exception&apos;&#x0D;&#x0A;- Original project: &apos;OrderItemService&apos;&#x0D;&#x0A;- Destination element: &apos;Oganization-Employee-service/src/main/java/com.employeeservice.Exception&apos;&#x0D;&#x0A;- Original element: &apos;com.orderitemservice.exception.ExceptionResponse.java&apos;" description="Copy compilation unit" destination="=Oganization-Employee-service/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.employeeservice.Exception" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.orderitemservice.exception{ExceptionResponse.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1610554658696" units="1" version="1.0"/>
+</session>

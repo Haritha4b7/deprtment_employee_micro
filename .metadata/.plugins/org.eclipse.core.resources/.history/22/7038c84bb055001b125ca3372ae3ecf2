@@ -1,0 +1,44 @@
+package com.departmentservice.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.departmentservice.service.DepartmentService;
+import com.orderinfoservice.entity.OrderData;
+
+/**
+ * 
+ * @author HarithaNadimpalli
+ *
+ */
+/**
+ * In this class have the all the methods related to Organization Department
+ */
+@RestController
+@RequestMapping("/department")
+public class OrgDepartmentController {
+	
+	@Autowired
+	DepartmentService deptService;
+	
+	/**
+	 * It will return the all Department Data
+	 * 
+	 * @return list of departments
+	 */
+	@GetMapping("")
+	public ResponseEntity<List<OrderData>> getAllOrders() {
+		LOGGER.info("Enter into  OrderInfoController : getAllOrders method {} ");
+		List<OrderData> orderDataList = new ArrayList<OrderData>();
+		orderDataList = orderInfoService.getAllOrders();
+		return new ResponseEntity<>(orderDataList, HttpStatus.OK);
+	}
+	
+}

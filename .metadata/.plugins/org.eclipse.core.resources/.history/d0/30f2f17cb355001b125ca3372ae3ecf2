@@ -1,0 +1,82 @@
+package com.departmentservice.model;
+
+import java.util.Set;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+/**
+ * @author Haritha
+ *
+ */
+//@Data
+//@Builder
+//@AllArgsConstructor
+//@NoArgsConstructor
+public class DepartmentReq {
+	
+	public DepartmentReq() {
+		super();
+		
+	}
+	
+	public DepartmentReq(
+			@NotNull @Size(min = 2, message = "Name should be atlease 2 characters ") String departmentName,
+			@NotNull String deptHead, @NotNull Set<Long> empIds, @NotNull String departmentDes) {
+		super();
+		this.departmentName = departmentName;
+		this.deptHead = deptHead;
+		this.empIds = empIds;
+		this.departmentDes = departmentDes;
+	}
+
+	public String getDepartmentName() {
+		return departmentName;
+	}
+
+	public void setDepartmentName(String departmentName) {
+		this.departmentName = departmentName;
+	}
+
+	public String getDeptHead() {
+		return deptHead;
+	}
+
+	public void setDeptHead(String deptHead) {
+		this.deptHead = deptHead;
+	}
+
+	public Set<Long> getEmpIds() {
+		return empIds;
+	}
+
+	public void setEmpIds(Set<Long> empIds) {
+		this.empIds = empIds;
+	}
+
+	public String getDepartmentDes() {
+		return departmentDes;
+	}
+
+	public void setDepartmentDes(String departmentDes) {
+		this.departmentDes = departmentDes;
+	}
+
+	@NotNull
+	@Size(min = 2, message = "Name should be atlease 2 characters ")
+	private String departmentName;
+
+	@NotNull
+	private String deptHead;
+
+	@NotNull
+	public Set<Long> empIds;
+
+	@NotNull
+	private String departmentDes;
+}

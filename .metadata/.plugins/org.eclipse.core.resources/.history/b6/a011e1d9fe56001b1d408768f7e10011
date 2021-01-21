@@ -1,0 +1,81 @@
+package com.employeeservice.service;
+
+/**
+ * @author Haritha Nadimpalli
+ *
+ */
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.employeeservice.Exception.EmployeeNotFounException;
+import com.employeeservice.entity.EmployeeEntity;
+import com.employeeservice.model.EmployeeReq;
+import com.employeeservice.repository.EmployeeRepository;
+import com.orderitemservice.service.OrderItemService;
+
+@Service
+public class EmployeeService {
+	
+	private static final Logger LOGGER = LogManager.getLogger(EmployeeService.class);
+	
+	@Autowired
+	private EmployeeRepository empRepository;
+	
+	/**
+	 * Get all the Employee details
+	 * 
+	 * @return
+	 */
+	public List<EmployeeEntity> getAllEmployees() {
+		LOGGER.info("Inside EmployeeService :: getAllEmployees Method {} ");
+		List<EmployeeEntity> empentity = new ArrayList<>();
+		empentity = empRepository.findAll();
+		return empentity;
+	}
+	
+	/**
+	 * get the employee details by id
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public EmployeeEntity getemployeeById(long id) {
+		//LOGGER.info("Inside OrderItemService :: getOrderItemById Method {} ");
+		return empRepository.findById(id).orElseThrow(() -> new EmployeeNotFounException());
+	}
+	
+	/**
+	 * Get the emps based on is
+	 * 
+	 * @param ids
+	 * @return
+	 */
+	public Set<EmployeeEntity> getEmpsByIds(Set<Long> ids) {
+		LOGGER.info("Inside EmployeeService :: getEmpsByIds Method {} ");
+		List<EmployeeEntity> emps = empRepository.findAllByEmpCodeIn(ids);
+		return emps.stream().collect(Collectors.toSet());
+
+	}
+	
+	/**
+	 * Save the employee into Database.
+	 * 
+	 * @param emp
+	 */
+	
+	public EmployeeEntity addEmployee(EmployeeReq empReq) {
+		//LOGGER.info("Inside OrderItemService :: addOrderItem Method {} ");
+		EmployeeEntity empData = new EmployeeEntity();
+		BeanUtils.copyProperties(empReq, empData);
+		EmployeeEntity savedEmp = empRepository.save(empData);
+		return savedEmp;
+	}
+}

@@ -1,0 +1,5 @@
+package com.springboot.h2.serv;
+
+public class Helper {
+
+}

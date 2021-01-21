@@ -1,0 +1,8 @@
+package com.departmentservice.service;
+
+import org.springframework.cloud.openfeign.FeignClient;
+
+@FeignClient(name = "http://departmentemployeeservice/OrderItemReq/")
+public interface EmployeeFeignClient {
+
+}

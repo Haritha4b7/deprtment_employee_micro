@@ -1,0 +1,9 @@
+package com.departmentservice.repository;
+
+/**
+ * @author Haritha Nadimpalli
+ *
+ */
+public class DepartmentServiceRepository {
+
+}

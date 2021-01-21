@@ -1,0 +1,16 @@
+package com.springboot.h2.serv;
+
+import javax.validation.constraints.NotNull;
+
+public class Helper {
+private String empCode;
+	
+	@NotNull
+	private String empFirstName;
+
+	@NotNull
+	private String empLastName;
+
+	@NotNull
+	private String email;
+}

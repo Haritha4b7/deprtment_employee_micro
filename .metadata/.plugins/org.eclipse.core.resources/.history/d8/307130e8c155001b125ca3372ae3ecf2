@@ -1,0 +1,16 @@
+package com.departmentservice.service;
+
+import java.util.Set;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.orderinfoservice.model.OrderItem;
+
+@FeignClient(name = "http://departmentemployeeservice/employeeInfo/")
+public interface EmployeeFeignClient {
+
+	@GetMapping("/empsByIds")
+	public Set<EmployeeItem> getOrderItemByIds(@RequestParam("ids") Set<Long> ids);
+}

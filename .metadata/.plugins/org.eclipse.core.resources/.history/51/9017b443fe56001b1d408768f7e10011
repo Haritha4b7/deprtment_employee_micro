@@ -1,0 +1,9 @@
+package com.employeeservice.Exception;
+/**
+ * @author Haritha Nadimpall
+ *
+ */
+public class EmployeeNotFounException extends RuntimeException{
+
+	//Exception
+}

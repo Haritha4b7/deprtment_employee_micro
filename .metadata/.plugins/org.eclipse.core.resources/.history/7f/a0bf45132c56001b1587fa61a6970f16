@@ -1,0 +1,24 @@
+package com.springboot.h2.serv;
+
+import java.util.Set;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+public class ExampeTest {
+
+private static final long serialVersionUID = 1L;
+	
+	@NotNull
+	@Size(min = 2, message = "Name should be atlease 2 characters ")
+	private String departmentName;
+
+	@NotNull
+	private String deptHead;
+
+	@NotNull
+	public Set<Long> empIds;
+
+	@NotNull
+	private String departmentDes;
+}

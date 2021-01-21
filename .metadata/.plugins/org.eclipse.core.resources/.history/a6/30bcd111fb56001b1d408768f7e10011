@@ -1,0 +1,40 @@
+package com.departmentservice;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+/**
+ * 
+ * @author Haritha Nadimpalli
+ *
+ */
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.Bean;
+
+import com.orderinfoservice.OrderInfoServiceApplication;
+
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+@SpringBootApplication
+@EnableEurekaClient
+@EnableFeignClients
+@EnableSwagger2
+public class OganizationDepartmentServiceApplication {
+	
+	private static final Logger LOGGER = LogManager.getLogger(OrderInfoServiceApplication.class);
+	
+	public static void main(String[] args) {
+		SpringApplication.run(OganizationDepartmentServiceApplication.class, args);
+	}
+	
+	@Bean
+	public Docket organizationDepartment() {
+	      return new Docket(DocumentationType.SWAGGER_2).select()
+	         .apis(RequestHandlerSelectors.basePackage("com.departmentservice")).build();
+	}
+}
