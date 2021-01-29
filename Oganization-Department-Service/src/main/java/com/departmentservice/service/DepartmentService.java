@@ -1,6 +1,7 @@
 package com.departmentservice.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,6 +22,7 @@ import com.departmentservice.model.DepartmentReq;
 import com.departmentservice.model.DepartmentRes;
 import com.departmentservice.model.EmployeeItem;
 import com.departmentservice.repository.DepartmentServiceRepository;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 /**
  * @author Haritha Nadimpalli
@@ -42,6 +44,7 @@ public class DepartmentService {
 	 * 
 	 * @return
 	 */
+	
 	public List<DepartmentRes> getAllDepartments() {
 		LOGGER.info("Fetching all deparments");
 		List<DepartmentEntity> deptlist=deptServiceRepo.findAll();
@@ -49,23 +52,46 @@ public class DepartmentService {
 		List<DepartmentRes> responseList= new ArrayList();
 		for(DepartmentEntity dept:deptlist) {
 			DepartmentRes response = entityToObject(dept);
+			
+			//Adding code to get the employee info
+			Set<EmployeeItem> empDetails =
+					  empFeignclient.getEmpsByIds(dept.getEmpIds()); 
+			response.setEmpDetailsList(empDetails);
+			
 			responseList.add(response);
 		}
+		
 		return responseList;
 	}
 	
 	/**
-	 * getting the deprtment details by deptId
+	 * getting the department details by deptId
 	 * 
 	 * @param id
 	 * @return
 	 */
+	//@HystrixCommand(fallbackMethod = "getDepartment_Fallback")
 	public DepartmentRes getDeptById(long id) {
 		LOGGER.info("Fetching the dept data for given id");
 		DepartmentEntity deptObj = deptServiceRepo.findById(id).orElseThrow(() -> new DepartmentNotFoundException());
 		DepartmentRes res= entityToObject(deptObj);
+		Set<EmployeeItem> empDetails =
+				  empFeignclient.getEmpsByIds(deptObj.getEmpIds()); 
+		res.setEmpDetailsList(empDetails);
 	 return  res;
 	}
+	
+	/*
+	 * @SuppressWarnings("unused") private DepartmentRes getDepartment_Fallback(long
+	 * id) {
+	 * 
+	 * System.out.println("Student Service is down!!! fallback route enabled...");
+	 * 
+	 * //return
+	 * "CIRCUIT BREAKER ENABLED!!! No Response From Student Service at this moment. "
+	 * + // " Service will be back shortly - " + new Date(); DepartmentRes res= new
+	 * DepartmentRes(); res.setDepartmentName("In fallback"); return res; }
+	 */
 	
 	/**
 	 * creates department
@@ -95,6 +121,9 @@ public class DepartmentService {
 		deptData.setEmpIds(empIds);
 		DepartmentEntity entityObj=deptServiceRepo.save(deptData);
 		DepartmentRes res = entityToObject(entityObj);
+		Set<EmployeeItem> empDetails =
+				  empFeignclient.getEmpsByIds(entityObj.getEmpIds()); 
+		res.setEmpDetailsList(empDetails);
 		return res;
 	}
 	
@@ -103,7 +132,7 @@ public class DepartmentService {
 		response.setDeptId(dept.getDeptId());
 		response.setDepartmentName(dept.getDepartmentName());
 		response.setDeptHead(dept.getDeptHead());
-		response.setEmpIds(dept.getEmpIds());
+		//response.setEmpIds(dept.getEmpIds());
 		response.setDepartmentDes(dept.getDepartmentDes());
 		
 		return response;

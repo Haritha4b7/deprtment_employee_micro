@@ -14,6 +14,9 @@ import lombok.NoArgsConstructor;
 public class EmployeeItem {
 
 	@NotNull
+	private long empCode;
+	
+	@NotNull
 	private String empFirstName;
 
 	@NotNull

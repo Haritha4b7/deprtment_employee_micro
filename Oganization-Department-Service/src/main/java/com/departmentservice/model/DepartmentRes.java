@@ -1,5 +1,6 @@
 package com.departmentservice.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.constraints.NotNull;
@@ -23,8 +24,11 @@ private static final long serialVersionUID = 1L;
 	@NotNull
 	private String deptHead;
 
+	//@NotNull
+	//public Set<Long> empIds;
+	
 	@NotNull
-	public Set<Long> empIds;
+	public Set<EmployeeItem> empDetailsList;
 
 	@NotNull
 	private String departmentDes;
@@ -53,13 +57,11 @@ private static final long serialVersionUID = 1L;
 		this.deptHead = deptHead;
 	}
 
-	public Set<Long> getEmpIds() {
-		return empIds;
-	}
-
-	public void setEmpIds(Set<Long> empIds) {
-		this.empIds = empIds;
-	}
+	/*
+	 * public Set<Long> getEmpIds() { return empIds; }
+	 * 
+	 * public void setEmpIds(Set<Long> empIds) { this.empIds = empIds; }
+	 */
 
 	public String getDepartmentDes() {
 		return departmentDes;
@@ -68,6 +70,15 @@ private static final long serialVersionUID = 1L;
 	public void setDepartmentDes(String departmentDes) {
 		this.departmentDes = departmentDes;
 	}
+
+	public Set<EmployeeItem> getEmpDetailsList() {
+		return empDetailsList;
+	}
+
+	public void setEmpDetailsList(Set<EmployeeItem> empDetailsList) {
+		this.empDetailsList = empDetailsList;
+	}
+
 	
 	
 }
